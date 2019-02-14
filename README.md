@@ -1,2 +1,8 @@
 # CalculusNumeric
- Contains algorithms implemented in the DIMAP Numeric Calculus discipline.
+
+## Introduction  
+  
+This repository contains the algorithms implemented in the dicipline of _Numerical Calculus_ of the bachelor in Information Technology (__UFRN__).
+	
+## Author  
+Samuel Lucas de Moura Ferino ( _samuel1797@gmail.com_ )
