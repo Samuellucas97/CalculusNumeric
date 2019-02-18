@@ -13,11 +13,14 @@
 
 bool arquivo(){
 
-	arq.open("")
+	arq.open("pontos.pts");
 
 	return true;
 }
 
+double formulaTangente(){
+
+}
 
 int main(){
 
