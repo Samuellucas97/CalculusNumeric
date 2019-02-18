@@ -1,4 +1,4 @@
-# CalculusNumeric
+# Calculus Numeric
 
 ## Introduction  
   
