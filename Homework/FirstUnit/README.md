@@ -20,7 +20,7 @@ Adicione grid, eixo x e eixo y
 Estime pontos da função f(x) no intervalo [-6,6] dado que ( e somente a partir dessas informações):
 
  - `f(0) = 1`
- - `f'(x) = cos(x) - x\*sen(x)`
+ - `f'(x) = cos(x) - x*sen(x)`
   
   
 Grave os pontos estimados em um arquivo e plote-os com
