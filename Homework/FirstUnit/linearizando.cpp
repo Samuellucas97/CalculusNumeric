@@ -35,7 +35,7 @@ int main(){
 	double taxaDeVariacao = 0.5; //! Taxa de variação parametrizada 
 
 	ofstream arqDados;
-	arqDados.open("dados.pts");
+	arqDados.open("dados_exercicio2.pts");
 
 	if(arqDados.is_open() == 0){ /// VERIFICANDO SE O ARQUIVO FOI ABERTO
 		cerr << "O arquivo nao foi aberto" << endl;
