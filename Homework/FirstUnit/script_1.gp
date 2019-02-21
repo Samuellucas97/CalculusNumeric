@@ -11,4 +11,4 @@ set ylabel "Coordenada Y"
 set key below
 set xzeroaxis
 set yzeroaxis
-plot f(x) title 'funcao cubica' lw 3, g(x) title 'reta tangente em x=1' lw 3, "< echo '1 1'" title "(1,f(1))"
+plot f(x) title 'funcao cúbica' lw 3, g(x) title 'reta tangente em x=1' lw 3, "< echo '1 0'" with points ls 4 lw 7 lc 5 title "( 1, f(1) )"
