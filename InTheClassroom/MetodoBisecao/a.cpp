@@ -5,6 +5,10 @@ double pontoMedio(double a, double b){
 	return a + ((b-a)/2);
 }
 
+double f(double x){
+	return x;  /// Aqui deve ficar a função
+}
+
 bool verificaCriterioDeParada(	double pMedio, 
 								double erro, 
 								double pMedioAnterior, 
