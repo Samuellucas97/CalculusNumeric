@@ -75,8 +75,8 @@ tuple<double,bool> metodoBisecao(	double inicioIntervalo,
 
 int main(){
 
-	if( get<1>( metodoBisecao(-1,1, 0.00001, 10) ) == true )
-		cout << "A raiz eh " << get<0>( metodoBisecao(-100,100, 0.00001, 10) ) << endl;
+	//if( get<1>( metodoBisecao(-5,5, 0.00001, 10) ) == true )
+		cout << "A raiz eh " << fabs(get<0>( metodoBisecao(-5,5, 0.00001, 10) )) << endl;
 
 	return 0;
 }

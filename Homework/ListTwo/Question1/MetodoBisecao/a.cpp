@@ -32,9 +32,7 @@ double pontoMedio(double a, double b){
 }
 
 double f(double x){
-	return 300 - ( (0.25*32.17) / 0.1)*x + 
-				( ( pow(0.25,2)*32.17) / pow(0.1,2) )*(1 - pow(M_E, (-1*x)/0.25 ) );  /// Aqui deve ficar a função
-//	return x;
+	return pow(x,3) - 1.7*pow(x,2) - 12.78*x -10.08;
 }
 
 tuple<double,bool> metodoBisecao(	double inicioIntervalo, 
@@ -75,8 +73,8 @@ tuple<double,bool> metodoBisecao(	double inicioIntervalo,
 
 int main(){
 
-	if( get<1>( metodoBisecao(-1,1, 0.00001, 10) ) == true )
-		cout << "A raiz eh " << get<0>( metodoBisecao(-100,100, 0.00001, 10) ) << endl;
+	//if( get<1>( metodoBisecao(-1,1, 0.00001, 10) ) == true )
+		cout << "A raiz eh " << fabs( get<0>( metodoBisecao(-100,100, 0.00001, 10) ) )<< endl;
 
 	return 0;
 }
