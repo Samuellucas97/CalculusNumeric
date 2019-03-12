@@ -1,5 +1,5 @@
 /**
- * @file	a.cpp
+ * @file	bisecao.cpp
  * @brief	Contém a função método interativo de biseção
  * @author	Samuel Lucas de Moura Ferino
  * @version	0.0.2

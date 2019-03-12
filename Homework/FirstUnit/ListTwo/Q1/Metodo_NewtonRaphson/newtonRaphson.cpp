@@ -1,6 +1,6 @@
 /**
- * @file	a.cpp
- * @brief	Contém a função método interativo de biseção
+ * @file	newtonRaphson.cpp
+ * @brief	Contém a função método interativo de Newton Raphson
  * @author	Samuel Lucas de Moura Ferino
  * @version	0.0.2
  */ 
@@ -34,8 +34,9 @@ double f(double x){
 	return pow(x,3) - 1.7*pow(x,2) - 12.78*x -10.08;
 }
 
-tuple<double,bool> metodoPontoFixo(	double ponto_Medio_anterior, 
-						int numero_IteracaoMaxima){
+tuple<double,bool> metodoNewtonRaphson(	double ponto_Medio_anterior, 
+                                        double erroTolerancia,
+						                int numero_IteracaoMaxima){
 
 	int numero_IteracaoAtual = 0; //-> Quantidade de iterações realizadas atualmente.
 	double ponto_Medio; //-> Contém o valor do ponto médio atual.
