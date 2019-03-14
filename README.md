@@ -6,8 +6,8 @@ This repository contains the algorithms implemented in the dicipline of _Numeric
 
 ## Reference  
 
-:link: [Análise numérica pdf](https://fac.ksu.edu.sa/sites/default/files/numerical_analysis_9th.pdf)  
+:link: [Numerical analysis (PDF)](https://fac.ksu.edu.sa/sites/default/files/numerical_analysis_9th.pdf)  
 
 
 ## Author  
-Samuel Lucas de Moura Ferino ( _samuel1797@gmail.com_ ) :copyright: IMD/UFRN 2019. 
+:copyright: IMD/UFRN 2019.   Samuel Lucas de Moura Ferino ( _samuel1797@gmail.com_ )  

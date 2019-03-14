@@ -44,8 +44,7 @@ tuple<double,bool> metodoSecante(	double inicioIntervalo,
 	double ponto_Medio; //-> Contém o valor do ponto médio atual.
 	double FA; //-> Contém o valor de f(a) onde 'a' é o ponto inicial do intervalo usado.
 	double FB; //-> Contém o valor de f(b) onde 'b' é o ponto final do intervalo usado.
-	double FP; //-> Contém o valor de f(p) onde 'p' é o ponto médio.
-
+	
 	numero_IteracaoAtual += 2;
 
 	FA = f(inicioIntervalo);
@@ -54,8 +53,17 @@ tuple<double,bool> metodoSecante(	double inicioIntervalo,
 
 	while( numero_IteracaoAtual <= numero_IteracaoMaxima ){
 
-        FP = fimIntervalo - ( FB*(fimIntervalo - inicioIntervalo)/ );
+        ponto_Medio = fimIntervalo - ( FB*(fimIntervalo - inicioIntervalo)/(FB - FA) );
 
+		if ( fabs(ponto_Medio - fimIntervalo) < erroTolerancia )
+			return make_tuple(ponto_Medio, true);
+
+		numero_IteracaoAtual += 1;
+
+		inicioIntervalo = fimIntervalo;
+		FA = FB;
+		fimIntervalo = ponto_Medio;
+		FB = f( ponto_Medio ); 	
 
 
 
