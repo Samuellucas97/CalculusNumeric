@@ -20,7 +20,6 @@ using std::cout;
 using std::endl;
 
 #include <cmath>
-using std::exp;
 
 #include <tuple>
 using std::tuple;

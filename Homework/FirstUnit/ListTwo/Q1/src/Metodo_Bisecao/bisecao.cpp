@@ -20,21 +20,39 @@ using std::cout;
 using std::endl;
 
 #include <cmath>
-using std::exp;
 
 #include <tuple>
 using std::tuple;
 using std::make_tuple;
 using std::get;
 
+/**
+ * @brief	Ponto médio do intervalo do valor a até o valor b
+ * @param	a	Valor que delimita o início do intervalo
+ * @param	b	Valor que delimita o fim do intervalo
+ */ 
 double pontoMedio(double a, double b){
 	return a + ((b-a)/2);
 }
 
+/**
+ * @brief	Função genérica
+ * @param	x	Entrada da função
+ */ 
 double f(double x){
 	return pow(x,3) - 1.7*pow(x,2) - 12.78*x -10.08;
 }
 
+/**
+ * @brief	Método iterativo da biseção
+ * @param	inicioIntervalo	Valor que delimita o inicício do intervalo
+ * @param	fimIntervalo	Valor que delimita o fim do intervalo
+ * @param	erroTolerancia	Tolerância de erro
+ * @param	numero_IteracaoMaxima	Quantidade máxima de iterações
+ * @return	Uma tupla contendo o valor da raiz e o valor verdade que indica
+ * 			se o método terminou com sucesso caso seja true e false caso
+ * 			contrário 
+ */ 
 tuple<double,bool> metodoBisecao(	double inicioIntervalo, 
 						double fimIntervalo, 
 						double erroTolerancia, 
@@ -73,8 +91,16 @@ tuple<double,bool> metodoBisecao(	double inicioIntervalo,
 
 int main(){
 
-	if( get<1>( metodoBisecao(-10,10, 0.001, 30) ) == true )
-		cout << "A raiz eh " << fabs( get<0>( metodoBisecao(-10,10, 0.001, 30) ) )<< endl;
+	cout << "As tres raizes sao: "; 
+
+	if( get<1>( metodoBisecao(-10,10, 0.0000001, 28) ) == true )  /// PRIMEIRA RAIZ: 4,8
+		cout << " " << get<0>( metodoBisecao(-10,10, 0.0000001, 28) );
+	if( get<1>( metodoBisecao(-10,1, 0.0000001, 28) ) == true )  /// SEGUNDA RAIZ: -2,1
+		cout << ", " << get<0>( metodoBisecao(-10,1, 0.0000001, 28) );
+	if( get<1>( metodoBisecao(-1.5,1, 0.0000001, 28) ) == true )  /// TERCEIRA RAIZ: -1
+		cout << " e " << get<0>( metodoBisecao(-1.5,1, 0.0000001, 28) ) << endl;
+	else
+		cout << "Nao foi encontrado raiz..." << endl;
 
 	return 0;
 }

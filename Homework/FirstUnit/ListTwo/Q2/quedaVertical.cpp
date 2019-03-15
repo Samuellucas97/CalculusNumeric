@@ -20,7 +20,6 @@ using std::cout;
 using std::endl;
 
 #include <cmath>
-using std::exp;
 
 #include <tuple>
 using std::tuple;
@@ -75,8 +74,11 @@ tuple<double,bool> metodoBisecao(	double inicioIntervalo,
 
 int main(){
 
-	//if( get<1>( metodoBisecao(-5,5, 0.00001, 10) ) == true )
-		cout << "A raiz eh " << fabs(get<0>( metodoBisecao(-5,5, 0.00001, 10) )) << endl;
+	if( get<1>( metodoBisecao(-10,10, 0.00001, 10) ) == true )
+		cout << "A raiz eh " << fabs(get<0>( metodoBisecao(-10,10, 0.00001, 10) )) << endl;
+	else
+		cout << "Nao foi encontrado raiz..." << endl;
+
 
 	return 0;
 }

@@ -61,8 +61,8 @@ tuple<double,bool> metodoNewtonRaphson(	double ponto_Medio_anterior,
 
 int main(){
 
-	if( get<1>( metodoPontoFixo(-1,1, 0.00001, 10) ) == true )
-		cout << "A raiz eh " << get<0>( metodoPontoFixo(-100,100, 0.00001, 10) ) << endl;
+	if( get<1>( metodoNewtonRaphson(1, 0.001, 30) ) == true )
+		cout << "A raiz eh " << get<0>( metodoNewtonRaphson(1, 0.001, 30) ) << endl;
 
 	return 0;
 }
