@@ -27,7 +27,7 @@ using std::make_tuple;
 using std::get;
 
 /**
- * @brief	Ponto médio do intervalo do valor a até o valor b
+ * @brief	Calcula o ponto médio do intervalo do valor a até o valor b
  * @param	a	Valor que delimita o início do intervalo
  * @param	b	Valor que delimita o fim do intervalo
  */ 

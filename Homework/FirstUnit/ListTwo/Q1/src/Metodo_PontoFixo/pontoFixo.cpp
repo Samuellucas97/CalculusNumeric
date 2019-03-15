@@ -39,16 +39,19 @@ tuple<double,bool> metodoPontoFixo(	double ponto_Medio_anterior,
 						int numero_IteracaoMaxima){
 
 	int numero_IteracaoAtual = 0; //-> Quantidade de iterações realizadas atualmente.
-	double ponto_Medio; //-> Contém o valor do ponto médio atual.
+	double ponto_Medio = 0; //-> Contém o valor do ponto médio atual.
 	
 	numero_IteracaoAtual += 1;
 
 	while( numero_IteracaoAtual <= numero_IteracaoMaxima ){
 
-		cout << "ponto medio = " << ponto_Medio 
+		cout << "48/- ponto medio = " << ponto_Medio 
 			 << " / ponto medio anterior =  " << ponto_Medio_anterior << endl;
 
 		ponto_Medio = f(ponto_Medio_anterior);
+		
+		cout << "53/- ponto medio = " << ponto_Medio 
+			 << " / ponto medio anterior =  " << ponto_Medio_anterior << endl;
 
 		if( fabs(ponto_Medio - ponto_Medio_anterior) < erroTolerancia )	/// Condição de parada alcançado, raiz encontrada ou intervalo pequeno demais
 			return make_tuple(ponto_Medio, true);
@@ -56,6 +59,9 @@ tuple<double,bool> metodoPontoFixo(	double ponto_Medio_anterior,
 		numero_IteracaoAtual += 1;
 
 		ponto_Medio_anterior = ponto_Medio; 
+		
+		cout << "63/- ponto medio = " << ponto_Medio 
+			 << " / ponto medio anterior =  " << ponto_Medio_anterior << endl;
 
 	}
 
@@ -66,8 +72,8 @@ int main(){
 	
 	cout << "As tres raizes sao: "; 
 	
-	if( get<1>( metodoPontoFixo(4.5, 0.1, 30) ) == true )	/// PRIMEIRA RAIZ: 4.8
-		cout << " " << get<0>( metodoPontoFixo(4.5, 0.1, 30) ) << endl;
+	if( get<1>( metodoPontoFixo(3, 0.01, 10) ) == true )	/// PRIMEIRA RAIZ: 4.8
+		cout << " " << get<0>( metodoPontoFixo(3, 0.1, 10) ) << endl;
 	// if( get<1>( metodoPontoFixo(-10, 0.001, 30) ) == true )	/// SEGUNDA RAIZ: -2,1
 	// 	cout << " " << get<0>( metodoPontoFixo(-10, 0.001, 30) ) << endl;
 	// if( get<1>( metodoPontoFixo(-1.5, 0.0000001, 30) ) == true )  /// TERCEIRA RAIZ: -1

@@ -1,6 +1,7 @@
 /**
- * @file	a.cpp
- * @brief	Contém a função método interativo de biseção
+ * @file	quedaLivre.cpp
+ * @brief	Contém o método iterativo de biseção sendo usado para encontra o ponto em que o objeto
+ * 			atinge o solo
  * @author	Samuel Lucas de Moura Ferino
  * @version	0.0.2
  */ 
@@ -26,16 +27,34 @@ using std::tuple;
 using std::make_tuple;
 using std::get;
 
+/**
+ * @brief	Calcula o ponto médio do intervalo do valor a até o valor b
+ * @param	a	Valor que delimita o início do intervalo
+ * @param	b	Valor que delimita o fim do intervalo
+ */ 
 double pontoMedio(double a, double b){
 	return a + ((b-a)/2);
 }
 
+/**
+ * @brief	Função genérica
+ * @param	x	Entrada da função
+ */ 
 double f(double x){
-	return 300 - ( (0.25*32.17) / 0.1)*x + 
-				( ( pow(0.25,2)*32.17) / pow(0.1,2) )*(1 - pow(M_E, (-1*x)/0.25 ) );  /// Aqui deve ficar a função
-//	return x;
+	return 300 - ( (0.25*32.17) / 0.1)*x 
+			   + ( ( pow(0.25,2)*32.17) / pow(0.1,2) )*(1 - pow(M_E, (-1*x)/0.25 ) );
 }
 
+/**
+ * @brief	Método iterativo da biseção
+ * @param	inicioIntervalo	Valor que delimita o inicício do intervalo
+ * @param	fimIntervalo	Valor que delimita o fim do intervalo
+ * @param	erroTolerancia	Tolerância de erro
+ * @param	numero_IteracaoMaxima	Quantidade máxima de iterações
+ * @return	Uma tupla contendo o valor da raiz e o valor verdade que indica
+ * 			se o método terminou com sucesso caso seja true e false caso
+ * 			contrário 
+ */ 
 tuple<double,bool> metodoBisecao(	double inicioIntervalo, 
 						double fimIntervalo, 
 						double erroTolerancia, 
@@ -74,8 +93,9 @@ tuple<double,bool> metodoBisecao(	double inicioIntervalo,
 
 int main(){
 
-	if( get<1>( metodoBisecao(-10,10, 0.00001, 10) ) == true )
-		cout << "A raiz eh " << fabs(get<0>( metodoBisecao(-10,10, 0.00001, 10) )) << endl;
+	if( get<1>( metodoBisecao(2,10, 0.00001, 100) ) == true )
+		cout << "Demorou " << get<0>( metodoBisecao(2,10, 0.00001, 100) ) 
+			 << " segundos para atingir ao solo" << endl;
 	else
 		cout << "Nao foi encontrado raiz..." << endl;
 

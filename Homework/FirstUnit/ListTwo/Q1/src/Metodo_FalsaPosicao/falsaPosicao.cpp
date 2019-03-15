@@ -74,10 +74,18 @@ tuple<double,bool> metodoFalsaPosicao(	double inicioIntervalo,
 	return make_tuple(ponto_Medio,false);
 }
 
-int main(){
+int main(){ /// TERMINAR
 
-	//if( get<1>( metodoFalsaPosicao(-1,1, 0.00001, 10) ) == true )
-		cout << "A raiz eh " << fabs( get<0>( metodoFalsaPosicao(-100,100, 0.00001, 10) ) )<< endl;
+	cout << "As tres raizes sao: "; 
+
+	if( get<1>( metodoFalsaPosicao(-10,10, 0.00001, 38) ) == true ) /// PRIMEIRA RAIZ: 4.8
+		cout << "A raiz eh " << fabs( get<0>( metodoFalsaPosicao(-10,10, 0.00001, 38) ) );
+	// if( get<1>( metodoFalsaPosicao(-10,-1.9, 0.0000001, 28) ) == true )  /// SEGUNDA RAIZ: -2,1
+		// cout << ", " << get<0>( metodoFalsaPosicao(-10,-1.9, 0.0000001, 28) );
+	if( get<1>( metodoFalsaPosicao(-1.5,1, 0.0000001, 28) ) == true )  /// TERCEIRA RAIZ: -1
+		cout << " e " << get<0>( metodoFalsaPosicao(-1.5,1, 0.0000001, 28) ) << endl;
+	else
+		cout << "Nao foi encontrado raiz..." << endl;
 
 	return 0;
 }
