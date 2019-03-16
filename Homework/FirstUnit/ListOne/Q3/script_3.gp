@@ -1,3 +1,7 @@
+set terminal png size 600, 400 enhanced
+set output 'exercicio3.png'
+set xzeroaxis
+set yzeroaxis
 set grid
 set xlabel "Coordenada X"
 set ylabel "Coordenada Y"
