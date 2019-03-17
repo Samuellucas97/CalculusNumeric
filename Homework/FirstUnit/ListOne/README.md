@@ -26,6 +26,8 @@ Estime pontos da função f(x) no intervalo [-6,6] dado que ( e somente a partir
 Grave os pontos estimados em um arquivo e plote-os com
  - plot "arquivo.pts" with lp, x\*cos(x)+1
 
-  
+## Exercício 3  
+
+Plote em um mesmo gráfico a função `f(x) = x*cos(x)` e sua aproximação pela série de taylor
 
 
