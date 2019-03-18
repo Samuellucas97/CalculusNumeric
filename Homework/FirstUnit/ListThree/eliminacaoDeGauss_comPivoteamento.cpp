@@ -22,6 +22,77 @@ using std::stoi;
 #include <vector>
 using std::vector;
 
+void
+imprimeVectorDeVectores( vector< vector<int> > &matrizAumentada_A_b ){
+
+    for(auto& n: matrizAumentada_A_b){ /// IMPRIMINDO MATRIZ (A | b)
+        for(auto& j: n){
+            cout << j << " ";
+        }
+        cout << endl;
+    }
+}
+
+int 
+encontraLinhaDoPivo(  vector< vector<int> > &matrizAumentada_A_b , int coluna ){
+
+    int linhaDoPivo = 0; //-> Linha atual que está o pivô
+    int pivo = matrizAumentada_A_b.at(0).at(coluna); //-> Elemento pivo o qual será inicializado com o valor da primeira linha
+
+    for( int i = 1; i < coluna -1 ; ++i){
+
+        if( matrizAumentada_A_b.at(i).at(coluna) > pivo ){
+            pivo = matrizAumentada_A_b.at(i).at(coluna);
+            linhaDoPivo = i;
+        }
+    }
+
+    cout << "PIVO: " << pivo << endl;
+
+    return linhaDoPivo;
+}
+
+void permutaLinhas( vector< vector<int> > &matrizAumentada_A_b, int linha1, int linha2   ){
+    matrizAumentada_A_b.at(linha1).swap(matrizAumentada_A_b.at(linha2));
+}
+
+void  atualizandoLinha( vector< vector<int> > &matrizAumentada_A_b, int multiplicador, int linha){
+    for(int i = 0; i < (int) matrizAumentada_A_b.size(); ++i){
+        matrizAumentada_A_b.at(linha).at(i) = matrizAumentada_A_b.at(linha).at(i) - multiplicador*matrizAumentada_A_b.at(linha).at(i);
+    }
+}
+
+vector< vector<int> >
+eliminacaoDeGauss_comPivoteamentoParcial( vector< vector<int> >  &matrizAumentada_A_b ){
+
+    int linhaDoPivo;
+    int multiplicador_m_ij;
+
+    for(int j = 0; j < (int) matrizAumentada_A_b.size() - 1; ++j){  
+
+        cout << endl << "j = " << j << endl;
+        imprimeVectorDeVectores(matrizAumentada_A_b);    
+
+        /// Encontrando a linha do pivô    
+        linhaDoPivo = encontraLinhaDoPivo( matrizAumentada_A_b, j );
+
+        cout << "Linha do pivo: " << linhaDoPivo << endl;
+
+        if( linhaDoPivo != j){ /// O pivô não se encontra na linha 'j' e por isso é necessário permutar linhas            
+            permutaLinhas( matrizAumentada_A_b, linhaDoPivo, j);
+        }
+
+        for(int i = j+1; i < (int) matrizAumentada_A_b.size(); ++i){ /// Atualizando as linhas abaixo do pivô
+            multiplicador_m_ij = matrizAumentada_A_b.at(i).at(j)/ matrizAumentada_A_b.at(j).at(j);
+            atualizandoLinha(matrizAumentada_A_b, multiplicador_m_ij, i);
+        }
+
+    }
+
+    return matrizAumentada_A_b;
+
+}
+
 int main(int argc, char* argv[] ){
 
     vector< vector<int> > matriz_A_b;
@@ -72,14 +143,11 @@ int main(int argc, char* argv[] ){
 
     }  
 
-    for(auto& n: matriz_A_b){ /// IMPRIMINDO MATRIZ (A | b)
-        for(auto& j: n){
-            cout << j << " ";
-        }
-        cout << endl;
-    }
+    imprimeVectorDeVectores(matriz_A_b);
 
-
+    eliminacaoDeGauss_comPivoteamentoParcial(matriz_A_b);
+      
+    
 	arqDados.close();
 
 	return 0;
