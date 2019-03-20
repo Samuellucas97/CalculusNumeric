@@ -39,51 +39,56 @@ encontraLinhaDoPivo(  vector< vector<int> > &matrizAumentada_A_b , int coluna ){
     int linhaDoPivo = 0; //-> Linha atual que está o pivô
     int pivo = matrizAumentada_A_b.at(0).at(coluna); //-> Elemento pivo o qual será inicializado com o valor da primeira linha
 
-    for( int i = 1; i < coluna -1 ; ++i){
+    for( int linha = 1; linha < coluna - 1 ; ++linha){
 
-        if( matrizAumentada_A_b.at(i).at(coluna) > pivo ){
-            pivo = matrizAumentada_A_b.at(i).at(coluna);
-            linhaDoPivo = i;
+        if( matrizAumentada_A_b.at(linha).at(coluna) > pivo ){
+            pivo = matrizAumentada_A_b.at(linha).at(coluna);
+            linhaDoPivo = linha;
         }
     }
-
-    cout << "PIVO: " << pivo << endl;
 
     return linhaDoPivo;
 }
 
 void permutaLinhas( vector< vector<int> > &matrizAumentada_A_b, int linha1, int linha2   ){
+
     matrizAumentada_A_b.at(linha1).swap(matrizAumentada_A_b.at(linha2));
+
 }
 
-void  atualizandoLinha( vector< vector<int> > &matrizAumentada_A_b, int multiplicador, int linha){
-    for(int i = 0; i < (int) matrizAumentada_A_b.size(); ++i){
-        matrizAumentada_A_b.at(linha).at(i) = matrizAumentada_A_b.at(linha).at(i) - multiplicador*matrizAumentada_A_b.at(linha).at(i);
+void atualizandoLinha( vector< vector<int> > &matrizAumentada_A_b, int multiplicador, int linha){
+    
+    for(int coluna = 0; coluna < (int) matrizAumentada_A_b.size(); ++coluna){
+        matrizAumentada_A_b.at(linha).at(coluna) = matrizAumentada_A_b.at(linha).at(coluna) 
+                                                - multiplicador*matrizAumentada_A_b.at(linha).at(coluna);
     }
+
 }
 
 vector< vector<int> >
 eliminacaoDeGauss_comPivoteamentoParcial( vector< vector<int> >  &matrizAumentada_A_b ){
 
-    int linhaDoPivo;
+    int linhaDoPivo_atual;
     int multiplicador_m_ij;
+    int quantidadeDeLinhas_matrizAumentada_A_b = (int) matrizAumentada_A_b.size();
 
-    for(int j = 0; j < (int) matrizAumentada_A_b.size() - 1; ++j){  
+    for(int coluna = 0; coluna < quantidadeDeLinhas_matrizAumentada_A_b - 1; ++coluna){  
 
-        cout << endl << "j = " << j << endl;
-        imprimeVectorDeVectores(matrizAumentada_A_b);    
-
+        // cout << endl << "coluna = " << coluna + 1 << endl;
+        // imprimeVectorDeVectores(matrizAumentada_A_b);    
+ 
         /// Encontrando a linha do pivô    
-        linhaDoPivo = encontraLinhaDoPivo( matrizAumentada_A_b, j );
+        linhaDoPivo_atual = encontraLinhaDoPivo( matrizAumentada_A_b, coluna );
 
-        cout << "Linha do pivo: " << linhaDoPivo << endl;
+        cout << "Linha do pivo atual: " << linhaDoPivo_atual << endl;
 
-        if( linhaDoPivo != j){ /// O pivô não se encontra na linha 'j' e por isso é necessário permutar linhas            
-            permutaLinhas( matrizAumentada_A_b, linhaDoPivo, j);
-        }
+        // if( linhaDoPivo != j){ /// O pivô não se encontra na linha 'j' e por isso é necessário permutar linhas            
+        permutaLinhas( matrizAumentada_A_b, linhaDoPivo_atual, coluna);
+        // }
 
-        for(int i = j+1; i < (int) matrizAumentada_A_b.size(); ++i){ /// Atualizando as linhas abaixo do pivô
-            multiplicador_m_ij = matrizAumentada_A_b.at(i).at(j)/ matrizAumentada_A_b.at(j).at(j);
+        for(int i = coluna+1; i < (int) matrizAumentada_A_b.size(); ++i){ /// Atualizando as linhas abaixo do pivô
+            multiplicador_m_ij = matrizAumentada_A_b.at(i).at(coluna)/ matrizAumentada_A_b.at(coluna).at(coluna);
+            cout << "Multiplicador: " << multiplicador_m_ij << "      a_" << i+1 << "_" << coluna+1 << endl; 
             atualizandoLinha(matrizAumentada_A_b, multiplicador_m_ij, i);
         }
 
@@ -143,7 +148,7 @@ int main(int argc, char* argv[] ){
 
     }  
 
-    imprimeVectorDeVectores(matriz_A_b);
+    // imprimeVectorDeVectores(matriz_A_b);
 
     eliminacaoDeGauss_comPivoteamentoParcial(matriz_A_b);
       
