@@ -11,6 +11,7 @@ using std::endl;
 using std::cerr;
 
 #include <cstdlib>
+#include <cmath>
 
 #include <fstream>
 using std::ifstream;
@@ -33,68 +34,54 @@ imprimeVectorDeVectores( vector< vector<int> > &matrizAumentada_A_b ){
     }
 }
 
-int 
-encontraLinhaDoPivo(  vector< vector<int> > &matrizAumentada_A_b , int coluna ){
-
-    int linhaDoPivo = 0; //-> Linha atual que está o pivô
-    int pivo = matrizAumentada_A_b.at(0).at(coluna); //-> Elemento pivo o qual será inicializado com o valor da primeira linha
-
-    for( int linha = 1; linha < coluna - 1 ; ++linha){
-
-        if( matrizAumentada_A_b.at(linha).at(coluna) > pivo ){
-            pivo = matrizAumentada_A_b.at(linha).at(coluna);
-            linhaDoPivo = linha;
-        }
-    }
-
-    return linhaDoPivo;
-}
-
-void permutaLinhas( vector< vector<int> > &matrizAumentada_A_b, int linha1, int linha2   ){
-
-    matrizAumentada_A_b.at(linha1).swap(matrizAumentada_A_b.at(linha2));
-
-}
-
-void atualizandoLinha( vector< vector<int> > &matrizAumentada_A_b, int multiplicador, int linha){
+void 
+eliminacaoDeGauss_comPivoteamentoParcial( vector< vector<int> > &matrizAumentada_A_b ){
     
-    for(int coluna = 0; coluna < (int) matrizAumentada_A_b.size(); ++coluna){
-        matrizAumentada_A_b.at(linha).at(coluna) = matrizAumentada_A_b.at(linha).at(coluna) 
-                                                - multiplicador*matrizAumentada_A_b.at(linha).at(coluna);
-    }
-
-}
-
-vector< vector<int> >
-eliminacaoDeGauss_comPivoteamentoParcial( vector< vector<int> >  &matrizAumentada_A_b ){
-
-    int linhaDoPivo_atual;
     int multiplicador_m_ij;
+    int pivoAtual;
+    int linha_pivoAtual;
     int quantidadeDeLinhas_matrizAumentada_A_b = (int) matrizAumentada_A_b.size();
 
-    for(int coluna = 0; coluna < quantidadeDeLinhas_matrizAumentada_A_b - 1; ++coluna){  
+    for( int coluna = 0; coluna < quantidadeDeLinhas_matrizAumentada_A_b - 1; ++coluna){
 
-        // cout << endl << "coluna = " << coluna + 1 << endl;
-        // imprimeVectorDeVectores(matrizAumentada_A_b);    
- 
-        /// Encontrando a linha do pivô    
-        linhaDoPivo_atual = encontraLinhaDoPivo( matrizAumentada_A_b, coluna );
+        pivoAtual = matrizAumentada_A_b.at(coluna).at(coluna);
+        linha_pivoAtual = coluna;
 
-        cout << "Linha do pivo atual: " << linhaDoPivo_atual << endl;
+        for( int linha = coluna + 1; linha < quantidadeDeLinhas_matrizAumentada_A_b; ++linha){
+            if ( fabs(matrizAumentada_A_b.at(linha).at(coluna) ) > fabs(pivoAtual) ){
+                pivoAtual = matrizAumentada_A_b.at(linha).at(coluna);
+                linha_pivoAtual = linha;
+            }
+        }
+        
+        if( pivoAtual == 0 ){
+            cerr << "Trata-se de uma matriz singular (det(A) = 0)"
+                 << endl;
 
-        // if( linhaDoPivo != j){ /// O pivô não se encontra na linha 'j' e por isso é necessário permutar linhas            
-        permutaLinhas( matrizAumentada_A_b, linhaDoPivo_atual, coluna);
-        // }
-
-        for(int i = coluna+1; i < (int) matrizAumentada_A_b.size(); ++i){ /// Atualizando as linhas abaixo do pivô
-            multiplicador_m_ij = matrizAumentada_A_b.at(i).at(coluna)/ matrizAumentada_A_b.at(coluna).at(coluna);
-            cout << "Multiplicador: " << multiplicador_m_ij << "      a_" << i+1 << "_" << coluna+1 << endl; 
-            atualizandoLinha(matrizAumentada_A_b, multiplicador_m_ij, i);
+            exit(1);
         }
 
-    }
+        if( linha_pivoAtual != coluna )
+            matrizAumentada_A_b.at(linha_pivoAtual).swap( matrizAumentada_A_b.at(coluna) );
 
-    return matrizAumentada_A_b;
+        for( int linha = coluna + 1; linha < quantidadeDeLinhas_matrizAumentada_A_b; ++linha){
+            
+            multiplicador_m_ij = matrizAumentada_A_b.at(linha).at(coluna) / matrizAumentada_A_b.at(coluna).at(coluna);                
+            matrizAumentada_A_b.at(linha).at(coluna) = 0;
+
+            for( int colunaVetor = coluna + 1; colunaVetor < quantidadeDeLinhas_matrizAumentada_A_b; ++colunaVetor){
+
+                matrizAumentada_A_b.at(linha).at(colunaVetor) = 
+                matrizAumentada_A_b.at(linha).at(colunaVetor) - multiplicador_m_ij * matrizAumentada_A_b.at(coluna).at(colunaVetor) ;
+
+            }
+
+            matrizAumentada_A_b.at(linha).at(quantidadeDeLinhas_matrizAumentada_A_b) = 
+            matrizAumentada_A_b.at(linha).at(quantidadeDeLinhas_matrizAumentada_A_b) - multiplicador_m_ij * 
+            matrizAumentada_A_b.at(coluna).at(quantidadeDeLinhas_matrizAumentada_A_b) ;
+
+        }
+    }
 
 }
 
@@ -157,3 +144,4 @@ int main(int argc, char* argv[] ){
 
 	return 0;
 }
+
