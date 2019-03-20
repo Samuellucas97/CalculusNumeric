@@ -80,8 +80,8 @@ int main(){ /// TERMINAR
 
 	if( get<1>( metodoFalsaPosicao(-10,10, 0.00001, 38) ) == true ) /// PRIMEIRA RAIZ: 4.8
 		cout << "A raiz eh " << fabs( get<0>( metodoFalsaPosicao(-10,10, 0.00001, 38) ) );
-	// if( get<1>( metodoFalsaPosicao(-10,-1.9, 0.0000001, 28) ) == true )  /// SEGUNDA RAIZ: -2,1
-		// cout << ", " << get<0>( metodoFalsaPosicao(-10,-1.9, 0.0000001, 28) );
+	 if( get<1>( metodoFalsaPosicao(-3,-1.2, 0.00001, 45) ) == true )  /// SEGUNDA RAIZ: -2,1
+		cout << ", " << get<0>( metodoFalsaPosicao(-5,-1.2, 0.00001, 45) );
 	if( get<1>( metodoFalsaPosicao(-1.5,1, 0.0000001, 28) ) == true )  /// TERCEIRA RAIZ: -1
 		cout << " e " << get<0>( metodoFalsaPosicao(-1.5,1, 0.0000001, 28) ) << endl;
 	else

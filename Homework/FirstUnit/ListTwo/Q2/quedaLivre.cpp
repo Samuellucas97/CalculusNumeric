@@ -42,7 +42,7 @@ double pontoMedio(double a, double b){
  */ 
 double f(double x){
 	return 300 - ( (0.25*32.17) / 0.1)*x 
-			   + ( ( pow(0.25,2)*32.17) / pow(0.1,2) )*(1 - pow(M_E, (-1*x)/0.25 ) );
+			   + ( ( pow(0.25,2)*32.17) / pow(0.1,2) )*(1 - pow(M_E, (-0.1*x)/0.25 ) );
 }
 
 /**
@@ -93,8 +93,8 @@ tuple<double,bool> metodoBisecao(	double inicioIntervalo,
 
 int main(){
 
-	if( get<1>( metodoBisecao(2,10, 0.00001, 100) ) == true )
-		cout << "Demorou " << get<0>( metodoBisecao(2,10, 0.00001, 100) ) 
+	if( get<1>( metodoBisecao(2,10, 0.00001, 20) ) == true )
+		cout << "Demorou " << get<0>( metodoBisecao(2,10, 0.00001, 20) ) 
 			 << " segundos para atingir ao solo" << endl;
 	else
 		cout << "Nao foi encontrado raiz..." << endl;
