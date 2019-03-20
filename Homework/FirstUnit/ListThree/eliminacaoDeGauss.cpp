@@ -1,6 +1,6 @@
 /**
  * @file	eliminacaoDeGauss.cpp
- * @brief	Contém o método de eliminação de Gauss
+ * @brief	Contém o método de eliminação de Gauss sem pivoteamento
  * @author 	Samuel Lucas de Moura Ferino
  * @version	0.0.1
  */
@@ -22,35 +22,16 @@ using std::stoi;
 #include <vector>
 using std::vector;
 
-// class Matriz{
+void imprimir(vector< vector<int> >&  matrizAumentada_A_b ){
 
-//     public:
+    for(auto& n: matrizAumentada_A_b){ /// IMPRIMINDO MATRIZ AUMENTADA (A | b)
+        for(auto& j: n){
+            cout << j << " ";
+        }
+        cout << endl;
+    }
 
-//         vector< vector<int> > matrizAumentada_A_b;
-//         vector< vector<int> > matriz_A;
-//         vector< vector<int> > vetorColuna_b;
-        
-//     public:
-
-//         Matriz( Matriz& A, bool ehMatrizAumentada ){
-
-//         }
-
-//         void subtracao( Matriz& A, bool ehMatrizAumentada ){
-
-//         }
-
-//         void imprimir( ){
-
-//             for(auto& n: matrizAumentada_A_b){ /// IMPRIMINDO MATRIZ AUMENTADA (A | b)
-//                 for(auto& j: n){
-//                     cout << j << " ";
-//                 }
-//                 cout << endl;
-//             }
-
-//         }    
-// };
+}    
 
 void eliminacaoDeGauss( vector< vector<int> >& matrizAumentada_A_b ){
 
@@ -66,10 +47,14 @@ void eliminacaoDeGauss( vector< vector<int> >& matrizAumentada_A_b ){
 
             for( int colunaVetor = coluna + 1; colunaVetor < quantidadeDeLinhas_matrizAumentada_A_b; ++colunaVetor){
 
-                matrizAumentada_A_b.at(linha).at(colunaVetor) = matrizAumentada_A_b.at(linha).at(colunaVetor) 
-                - multiplicador_m_ij * matrizAumentada_A_b.at(coluna).at(coluna) ;
+                matrizAumentada_A_b.at(linha).at(colunaVetor) = 
+                matrizAumentada_A_b.at(linha).at(colunaVetor) - multiplicador_m_ij * matrizAumentada_A_b.at(coluna).at(colunaVetor) ;
 
             }
+
+            matrizAumentada_A_b.at(linha).at(quantidadeDeLinhas_matrizAumentada_A_b) = 
+            matrizAumentada_A_b.at(linha).at(quantidadeDeLinhas_matrizAumentada_A_b) - multiplicador_m_ij * 
+            matrizAumentada_A_b.at(coluna).at(quantidadeDeLinhas_matrizAumentada_A_b) ;
 
         }
 
@@ -127,8 +112,9 @@ int main(int argc, char* argv[] ){
 
     }  
 
-    //imprimeVectorDeVectores(matriz_A_b);
+    imprimir(matriz_A_b);
     eliminacaoDeGauss(matriz_A_b);
+    imprimir(matriz_A_b);
     
 	arqDados.close();
 
