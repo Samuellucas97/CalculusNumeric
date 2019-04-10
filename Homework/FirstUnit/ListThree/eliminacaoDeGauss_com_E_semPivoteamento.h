@@ -115,31 +115,36 @@ eliminacaoDeGauss_comPivoteamentoParcial( vector< vector<double> > &matrizAument
 vector<double>&
 resolverSistemaLinearTriangularSuperior( vector< vector<double> >& matrizAumentada_A_b ){
     
-    vector<double> vetorSolucaoInvertido;
-    int somatorio;
+    double somatorio;
     int quantidadeDeLinhas_matrizAumentada_A_b = (int) matrizAumentada_A_b.size();
+    double vetorSolucao[quantidadeDeLinhas_matrizAumentada_A_b];
+    vector<double> vetorSolucaoAproximada;
 
-    vetorSolucaoInvertido.push_back(
+    vetorSolucao[ quantidadeDeLinhas_matrizAumentada_A_b - 1 ] = (
         matrizAumentada_A_b.at(quantidadeDeLinhas_matrizAumentada_A_b).at(quantidadeDeLinhas_matrizAumentada_A_b+1) 
                             / 
         matrizAumentada_A_b.at(quantidadeDeLinhas_matrizAumentada_A_b).at(quantidadeDeLinhas_matrizAumentada_A_b)
                           ) ;
     
-    for(int coluna = quantidadeDeLinhas_matrizAumentada_A_b -1;coluna > 0;--coluna){
+    for(int linha = quantidadeDeLinhas_matrizAumentada_A_b - 1;linha > 0;--linha){
         
         somatorio = 0;
 
-        // for(){}
+        for(int coluna = linha + 1; coluna < quantidadeDeLinhas_matrizAumentada_A_b ; --coluna){
+            somatorio = somatorio + matrizAumentada_A_b.at(linha).at(coluna) * vetorSolucao[coluna];       
+        }
 
-        vetorSolucaoInvertido.push_back(
+        vetorSolucao[linha] =(
         (  matrizAumentada_A_b.at(quantidadeDeLinhas_matrizAumentada_A_b).at(quantidadeDeLinhas_matrizAumentada_A_b+1) - somatorio )
                                 / 
             matrizAumentada_A_b.at(quantidadeDeLinhas_matrizAumentada_A_b).at(quantidadeDeLinhas_matrizAumentada_A_b)
                             ) ;
-
     }
 
-    return vetorSolucao;
+    for(int i = quantidadeDeLinhas_matrizAumentada_A_b; i > 0; --i)
+        vetorSolucaoAproximada.push_back(vetorSolucao[i]);
+
+    return vetorSolucaoAproximada;
 }  
 
 #endif

@@ -93,12 +93,12 @@ int main(){
 
 	cout << "As tres raizes sao: "; 
 
-	if( get<1>( metodoBisecao(-10,10, 0.0000001, 28) ) == true )  /// PRIMEIRA RAIZ: 4,8
-		cout << " " << get<0>( metodoBisecao(-10,10, 0.0000001, 28) );
-	if( get<1>( metodoBisecao(-10,1, 0.0000001, 28) ) == true )  /// SEGUNDA RAIZ: -2,1
-		cout << ", " << get<0>( metodoBisecao(-10,1, 0.0000001, 28) );
-	if( get<1>( metodoBisecao(-1.5,1, 0.0000001, 28) ) == true )  /// TERCEIRA RAIZ: -1
-		cout << " e " << get<0>( metodoBisecao(-1.5,1, 0.0000001, 28) ) << endl;
+	if( get<1>( metodoBisecao(-10,10, 0.00001, 22) ) == true )  /// PRIMEIRA RAIZ: 4,8
+		cout << " " << get<0>( metodoBisecao(-10,10, 0.00001, 22) );
+	if( get<1>( metodoBisecao(-10,1, 0.00001, 21) ) == true )  /// SEGUNDA RAIZ: -2,1
+		cout << ", " << get<0>( metodoBisecao(-10,1, 0.00001, 21) );
+	if( get<1>( metodoBisecao(-1.5,1, 0.00001, 20) ) == true )  /// TERCEIRA RAIZ: -1
+		cout << " e " << get<0>( metodoBisecao(-1.5,1, 0.00001, 20) ) << endl;
 	else
 		cout << "Nao foi encontrado raiz..." << endl;
 

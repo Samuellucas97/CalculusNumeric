@@ -74,12 +74,12 @@ int main(){
 
 	cout << "As tres raizes sao: "; 
 
-	if( get<1>( metodoSecante(-10,10, 0.0000001, 28) ) == true )  /// PRIMEIRA RAIZ: 4,8
-		cout << " " << get<0>( metodoSecante(2,10, 0.0000001, 28) );
-	if( get<1>( metodoSecante(-5,-1.7, 0.0000001, 28) ) == true )  /// SEGUNDA RAIZ: -2,1
-		cout << ", " << get<0>( metodoSecante(-5,-1.7, 0.0000001, 28) );
-	if( get<1>( metodoSecante(-1.5,1, 0.0000001, 28) ) == true )  /// TERCEIRA RAIZ: -1
-		cout << " e " << get<0>( metodoSecante(-1.5,1, 0.0000001, 28) ) << endl;
+	if( get<1>( metodoSecante(-10,10, 0.00001, 15) ) == true )  /// PRIMEIRA RAIZ: 4,8
+		cout << " " << get<0>( metodoSecante(2,10, 0.00001, 15) );
+	if( get<1>( metodoSecante(-5,-1.7, 0.00001, 10) ) == true )  /// SEGUNDA RAIZ: -2,1
+		cout << ", " << get<0>( metodoSecante(-5,-1.7, 0.00001, 10) );
+	if( get<1>( metodoSecante(-1.5,1, 0.00001, 9) ) == true )  /// TERCEIRA RAIZ: -1
+		cout << " e " << get<0>( metodoSecante(-1.5,1, 0.00001, 9) ) << endl;
 	else
 		cout << "Nao foi encontrado raiz..." << endl;
 
