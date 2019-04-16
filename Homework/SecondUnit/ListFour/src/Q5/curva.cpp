@@ -38,6 +38,15 @@ double interpolacao(vector<double> v, double t) {
 	int n = v.size();
 	double ret = 0;
 
+	if( t == 0)
+		return v[0];
+
+	else if( t == 1 )	
+		return v[n - 1];	
+
+	else
+
+
 	return ret;
 }
 
