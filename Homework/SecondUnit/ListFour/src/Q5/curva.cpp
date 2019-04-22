@@ -5,6 +5,8 @@
 #include <string.h>
 #include <vector>
 
+#include "interpolacaoPolinomialNewton.h"
+
 double tAtual = 0.0; //um ponto é renderizado na reta
 int delta = 1; //= 1 ou -1... variação positiva ou negativa de tAtual, quando animacao = 1
 int animacao = 1;
@@ -41,13 +43,10 @@ double interpolacao(vector<double> v, double t) {
 	if( t == 0)
 		return v[0];
 
-	else if( t == 1 )	
+	if( t == 1 )	
 		return v[n - 1];	
 
-	else
-
-
-	return ret;
+	return interpolacaoPolinomial_Newton( v, t );
 }
 
 
