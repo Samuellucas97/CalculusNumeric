@@ -46,7 +46,7 @@ double interpolacao(vector<double> v, double t) {
 	if( t == 1 )	
 		return v[n - 1];	
 
-	return interpolacaoPolinomial_Newton( v, t );
+	return interpolacaoPolinomial_Lagrange( v, t );
 }
 
 
