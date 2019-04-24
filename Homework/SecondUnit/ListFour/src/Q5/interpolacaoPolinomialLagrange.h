@@ -1,5 +1,5 @@
-#ifndef _INTERPOLACAOPOLINOMIALNEWTON_H
-#define _INTERPOLACAOPOLINOMIALNEWTON_H
+#ifndef _INTERPOLACAOPOLINOMIALLAGRANGE_H
+#define _INTERPOLACAOPOLINOMIALLAGRANGE_H
 
 #include <vector>
 
@@ -9,7 +9,7 @@ interpolacaoPolinomial_Lagrange( std::vector<double> y, double x_aproximado ){
     std::vector<double> x;
     double pn = 0;
 
-    for( int i = (y.size() - 1); i >= 0; --i)
+    for( int i = 0; i < y.size(); --i)
         x.push_back(i);
 
     for(int j = 0; j < y.size(); ++j){
@@ -26,7 +26,7 @@ interpolacaoPolinomial_Lagrange( std::vector<double> y, double x_aproximado ){
         
     }
 
-    return 0;
+    return pn;
 }
 
 

@@ -5,7 +5,7 @@
 #include <string.h>
 #include <vector>
 
-#include "interpolacaoPolinomialNewton.h"
+#include "interpolacaoPolinomialLagrange.h"
 
 double tAtual = 0.0; //um ponto é renderizado na reta
 int delta = 1; //= 1 ou -1... variação positiva ou negativa de tAtual, quando animacao = 1
