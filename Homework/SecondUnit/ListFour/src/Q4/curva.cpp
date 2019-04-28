@@ -5,7 +5,7 @@
 #include <string.h>
 #include <vector>
 
-#include "interpolacaoPolinomialLagrange.h"
+#include "/Q4/interpolacaoPolinomial.h"
 
 double tAtual = 0.0; //um ponto é renderizado na reta
 int delta = 1; //= 1 ou -1... variação positiva ou negativa de tAtual, quando animacao = 1
@@ -46,7 +46,7 @@ double interpolacao(vector<double> v, double t) {
 	if( t == 1 )	
 		return v[n - 1];	
 
-	return interpolacaoPolinomial_Lagrange( v, t );
+	return interpolacaoLagrange( v, t );
 }
 
 
