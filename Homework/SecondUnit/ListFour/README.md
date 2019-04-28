@@ -30,7 +30,7 @@ Em seguida, serão criados os seguintes arquivos binários (executáveis):
 
 | Nome do executável: | Descrição: | 
 | ---------- | ------------- |
-|`servidor` 	|Socket do servidor que recebe o comando e envia a atualizacao da tela.  
+|`curva` 	| Gera uma imagem.  
   
 Diante disso, execute o arquivo binário `curva`  
 
