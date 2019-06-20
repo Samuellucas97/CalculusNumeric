@@ -11,4 +11,8 @@ This repository contains the algorithms and exercise implemented in the diciplin
 :link: [Practical class of Calculus 1 - Gnuplot (Slides)](http://www.uel.br/projetos/matessencial/superior/pdfs/sacgnu01.pdf)  
 
 ## Author  
-:copyright: IMD/UFRN 2019.   Samuel Lucas de Moura Ferino ( _samuel1797@gmail.com_ )  
+
+| Nome: | Github: | email: |  
+| ---------- | ------------- | ------------- |
+|`Samuel Lucas de Moura Ferino` 	| https://github.com/Samuellucas97 |_samuellucas97@ufrn.edu.br_  
+
