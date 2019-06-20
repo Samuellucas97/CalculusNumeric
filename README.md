@@ -12,7 +12,7 @@ This repository contains the algorithms and exercise implemented in the diciplin
 
 ## Author  
 
-| Nome: | Github: | email: |  
+| Name: | Github: | email: |  
 | ---------- | ------------- | ------------- |
 |`Samuel Lucas de Moura Ferino` 	| https://github.com/Samuellucas97 |_samuellucas97@ufrn.edu.br_  
 
